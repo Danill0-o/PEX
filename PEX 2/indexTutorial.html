@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faça Você Mesmo - Guia de Reparos com Gesso/Drywall</title>
+    <style>
+        /* Design System */
+        :root {
+            --color-white: rgba(255, 255, 255, 1);
+            --color-black: rgba(0, 0, 0, 1);
+            --color-cream-50: rgba(252, 252, 249, 1);
+            --color-cream-100: rgba(255, 255, 253, 1);
+            --color-gray-200: rgba(245, 245, 245, 1);
+            --color-gray-300: rgba(167, 169, 169, 1);
+            --color-gray-400: rgba(119, 124, 124, 1);
+            --color-slate-500: rgba(98, 108, 113, 1);
+            --color-brown-600: rgba(94, 82, 64, 1);
+            --color-charcoal-700: rgba(31, 33, 33, 1);
+            --color-charcoal-800: rgba(38, 40, 40, 1);
+            --color-slate-900: rgba(19, 52, 59, 1);
+            --color-teal-300: rgba(50, 184, 198, 1);
+            --color-teal-400: rgba(45, 166, 178, 1);
+            --color-teal-500: rgba(33, 128, 141, 1);
+            --color-teal-600: rgba(29, 116, 128, 1);
+            --color-teal-700: rgba(26, 104, 115, 1);
+            --color-teal-800: rgba(41, 150, 161, 1);
+            --color-red-400: rgba(255, 84, 89, 1);
+            --color-red-500: rgba(192, 21, 47, 1);
+            --color-orange-400: rgba(230, 129, 97, 1);
+            --color-orange-500: rgba(168, 75, 47, 1);
+            --color-brown-600-rgb: 94, 82, 64;
+            --color-teal-500-rgb: 33, 128, 141;
+            --color-slate-900-rgb: 19, 52, 59;
+            --color-slate-500-rgb: 98, 108, 113;
+            --color-red-500-rgb: 192, 21, 47;
+            --color-red-400-rgb: 255, 84, 89;
+            --color-orange-500-rgb: 168, 75, 47;
+            --color-orange-400-rgb: 230, 129, 97;
+            --color-bg-1: rgba(59, 130, 246, 0.08);
+            --color-bg-2: rgba(245, 158, 11, 0.08);
+            --color-bg-3: rgba(34, 197, 94, 0.08);
+            --color-bg-4: rgba(239, 68, 68, 0.08);
+            --color-bg-5: rgba(147, 51, 234, 0.08);
+            --color-bg-6: rgba(249, 115, 22, 0.08);
+            --color-bg-7: rgba(236, 72, 153, 0.08);
+            --color-bg-8: rgba(6, 182, 212, 0.08);
+            --color-background: var(--color-cream-50);
+            --color-surface: var(--color-cream-100);
+            --color-text: var(--color-slate-900);
+            --color-text-secondary: var(--color-slate-500);
+            --color-primary: var(--color-teal-500);
+            --color-primary-hover: var(--color-teal-600);
+            --color-primary-active: var(--color-teal-700);
+            --color-secondary: rgba(var(--color-brown-600-rgb), 0.12);
+            --color-secondary-hover: rgba(var(--color-brown-600-rgb), 0.2);
+            --color-secondary-active: rgba(var(--color-brown-600-rgb), 0.25);
+            --color-border: rgba(var(--color-brown-600-rgb), 0.2);
+            --color-btn-primary-text: var(--color-cream-50);
+            --color-card-border: rgba(var(--color-brown-600-rgb), 0.12);
+            --color-card-border-inner: rgba(var(--color-brown-600-rgb), 0.12);
+            --color-error: var(--color-red-500);
+            --color-success: var(--color-teal-500);
+            --color-warning: var(--color-orange-500);
+            --color-info: var(--color-slate-500);
+            --color-focus-ring: rgba(var(--color-teal-500-rgb), 0.4);
+            --color-select-caret: rgba(var(--color-slate-900-rgb), 0.8);
+            --focus-ring: 0 0 0 3px var(--color-focus-ring);
+            --focus-outline: 2px solid var(--color-primary);
+            --status-bg-opacity: 0.15;
+            --status-border-opacity: 0.25;
+            --font-family-base: "FKGroteskNeue", "Geist", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            --font-family-mono: "Berkeley Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+            --font-size-xs: 11px;
+            --font-size-sm: 12px;
+            --font-size-base: 14px;
+            --font-size-md: 14px;
+            --font-size-lg: 16px;
+            --font-size-xl: 18px;
+            --font-size-2xl: 20px;
+            --font-size-3xl: 24px;
+            --font-size-4xl: 30px;
+            --font-weight-normal: 400;
+            --font-weight-medium: 500;
+            --font-weight-semibold: 550;
+            --font-weight-bold: 600;
+            --line-height-tight: 1.2;
+            --line-height-normal: 1.5;
+            --letter-spacing-tight: -0.01em;
+            --space-0: 0;
+            --space-1: 1px;
+            --space-2: 2px;
+            --space-4: 4px;
+            --space-6: 6px;
+            --space-8: 8px;
+            --space-10: 10px;
+            --space-12: 12px;
+            --space-16: 16px;
+            --space-20: 20px;
+            --space-24: 24px;
+            --space-32: 32px;
+            --radius-sm: 6px;
+            --radius-base: 8px;
+            --radius-md: 10px;
+            --radius-lg: 12px;
+            --radius-full: 9999px;
+            --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.02);
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.04), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.04), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
+            --shadow-inset-sm: inset 0 1px 0 rgba(255, 255, 255, 0.15), inset 0 -1px 0 rgba(0, 0, 0, 0.03);
+            --duration-fast: 150ms;
+            --duration-normal: 250ms;
+            --ease-standard: cubic-bezier(0.16, 1, 0.3, 1);
+            --container-sm: 640px;
+            --container-md: 768px;
+            --container-lg: 1024px;
+            --container-xl: 1280px;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --color-gray-400-rgb: 119, 124, 124;
+                --color-teal-300-rgb: 50, 184, 198;
+                --color-gray-300-rgb: 167, 169, 169;
+                --color-gray-200-rgb: 245, 245, 245;
+                --color-bg-1: rgba(29, 78, 216, 0.15);
+                --color-bg-2: rgba(180, 83, 9, 0.15);
+                --color-bg-3: rgba(21, 128, 61, 0.15);
+                --color-bg-4: rgba(185, 28, 28, 0.15);
+                --color-bg-5: rgba(107, 33, 168, 0.15);
+                --color-bg-6: rgba(194, 65, 12, 0.15);
+                --color-bg-7: rgba(190, 24, 93, 0.15);
+                --color-bg-8: rgba(8, 145, 178, 0.15);
+                --color-background: var(--color-charcoal-700);
+                --color-surface: var(--color-charcoal-800);
+                --color-text: var(--color-gray-200);
+                --color-text-secondary: rgba(var(--color-gray-300-rgb), 0.7);
+                --color-primary: var(--color-teal-300);
+                --color-primary-hover: var(--color-teal-400);
+                --color-primary-active: var(--color-teal-800);
+                --color-secondary: rgba(var(--color-gray-400-rgb), 0.15);
+                --color-secondary-hover: rgba(var(--color-gray-400-rgb), 0.25);
+                --color-secondary-active: rgba(var(--color-gray-400-rgb), 0.3);
+                --color-border: rgba(var(--color-gray-400-rgb), 0.3);
+                --color-error: var(--color-red-400);
+                --color-success: var(--color-teal-300);
+                --color-warning: var(--color-orange-400);
+                --color-info: var(--color-gray-300);
+                --color-focus-ring: rgba(var(--color-teal-300-rgb), 0.4);
+                --color-btn-primary-text: var(--color-slate-900);
+                --color-card-border: rgba(var(--color-gray-400-rgb), 0.2);
+                --color-card-border-inner: rgba(var(--color-gray-400-rgb), 0.15);
+                --shadow-inset-sm: inset 0 1px 0 rgba(255, 255, 255, 0.1), inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+            }
+        }
+
+        @font-face {
+            font-family: 'FKGroteskNeue';
+            src: url('https://r2cdn.perplexity.ai/fonts/FKGroteskNeue.woff2') format('woff2');
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-family: var(--font-family-base);
+            font-size: var(--font-size-base);
+            line-height: var(--line-height-normal);
+            color: var(--color-text);
+            background-color: var(--color-background);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #228be6 0%, #1863a7 100%);
+            color: white;
+            padding: var(--space-32) var(--space-20);
+            text-align: center;
+            position: relative;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .header h1 {
+            font-size: var(--font-size-4xl);
+            font-weight: var(--font-weight-bold);
+            margin-bottom: var(--space-12);
+            letter-spacing: var(--letter-spacing-tight);
+        }
+
+        .header p {
+            font-size: var(--font-size-lg);
+            opacity: 0.95;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Navigation */
+        .nav-container {
+            position: sticky;
+            top: 0;
+            background: var(--color-surface);
+            border-bottom: 1px solid var(--color-border);
+            z-index: 100;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: center;
+            padding: var(--space-12) var(--space-16);
+            gap: var(--space-8);
+            flex-wrap: wrap;
+            max-width: var(--container-xl);
+            margin: 0 auto;
+        }
+
+        .nav-item {
+            padding: var(--space-8) var(--space-16);
+            background: var(--color-secondary);
+            border-radius: var(--radius-base);
+            text-decoration: none;
+            color: var(--color-text);
+            font-size: var(--font-size-sm);
+            font-weight: var(--font-weight-medium);
+            transition: all var(--duration-fast) var(--ease-standard);
+            border: 1px solid transparent;
+        }
+
+        .nav-item:hover {
+            background: var(--color-secondary-hover);
+            border-color: var(--color-primary);
+        }
+
+        .nav-item.active {
+            background: var(--color-primary);
+            color: var(--color-btn-primary-text);
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: var(--container-lg);
+            margin: 0 auto;
+            padding: var(--space-24) var(--space-20);
+        }
+
+        /* Section */
+        .section {
+            margin-bottom: var(--space-32);
+            padding: var(--space-32) 0;
+            scroll-margin-top: 80px;
+        }
+
+        .section-title {
+            font-size: var(--font-size-3xl);
+            font-weight: var(--font-weight-bold);
+            color: var(--color-text);
+            margin-bottom: var(--space-24);
+            display: flex;
+            align-items: center;
+            gap: var(--space-12);
+        }
+
+        .section-number {
+            background: var(--color-primary);
+            color: var(--color-btn-primary-text);
+            width: 48px;
+            height: 48px;
+            border-radius: var(--radius-full);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: var(--font-size-2xl);
+            font-weight: var(--font-weight-bold);
+            flex-shrink: 0;
+        }
+
+        .section-content {
+            font-size: var(--font-size-lg);
+            line-height: 1.7;
+            color: var(--color-text);
+            margin-bottom: var(--space-24);
+        }
+
+        /* Images */
+        .images-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-20);
+            margin: var(--space-24) 0;
+        }
+
+        .image-wrapper {
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--color-card-border);
+            background: var(--color-surface);
+        }
+
+        .image-wrapper img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .image-single {
+            max-width: 700px;
+            margin: var(--space-24) auto;
+        }
+
+        /* Alert Box */
+        .alert-box {
+            background: rgba(255, 107, 107, 0.15);
+            border: 2px solid #ff6b6b;
+            border-radius: var(--radius-lg);
+            padding: var(--space-20);
+            margin: var(--space-24) 0;
+            font-size: var(--font-size-lg);
+            font-weight: var(--font-weight-medium);
+            color: var(--color-text);
+        }
+
+        .alert-icon {
+            font-size: var(--font-size-2xl);
+            margin-right: var(--space-8);
+        }
+
+        /* Materials Box */
+        .materials-box {
+            background: var(--color-bg-3);
+            border: 1px solid var(--color-success);
+            border-radius: var(--radius-lg);
+            padding: var(--space-24);
+            margin: var(--space-24) 0;
+        }
+
+        .materials-title {
+            font-size: var(--font-size-xl);
+            font-weight: var(--font-weight-bold);
+            margin-bottom: var(--space-16);
+            color: var(--color-text);
+            display: flex;
+            align-items: center;
+            gap: var(--space-8);
+        }
+
+        .materials-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .materials-list li {
+            padding: var(--space-8) 0;
+            font-size: var(--font-size-lg);
+            display: flex;
+            align-items: center;
+            gap: var(--space-8);
+        }
+
+        .materials-list li:before {
+            content: "✓";
+            color: var(--color-success);
+            font-weight: var(--font-weight-bold);
+            font-size: var(--font-size-xl);
+        }
+
+        /* Steps */
+        .steps-container {
+            margin: var(--space-24) 0;
+        }
+
+        .step {
+            background: var(--color-surface);
+            border: 1px solid var(--color-card-border);
+            border-radius: var(--radius-lg);
+            padding: var(--space-20);
+            margin-bottom: var(--space-16);
+            display: flex;
+            gap: var(--space-16);
+            align-items: flex-start;
+            transition: all var(--duration-fast) var(--ease-standard);
+        }
+
+        .step:hover {
+            box-shadow: var(--shadow-md);
+            border-color: var(--color-primary);
+        }
+
+        .step-number {
+            background: var(--color-primary);
+            color: var(--color-btn-primary-text);
+            width: 36px;
+            height: 36px;
+            border-radius: var(--radius-full);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: var(--font-weight-bold);
+            flex-shrink: 0;
+        }
+
+        .step-content {
+            flex: 1;
+            font-size: var(--font-size-lg);
+            line-height: 1.6;
+        }
+
+        /* Tip Box */
+        .tip-box {
+            background: var(--color-bg-2);
+            border: 1px solid var(--color-warning);
+            border-radius: var(--radius-lg);
+            padding: var(--space-20);
+            margin: var(--space-24) 0;
+            font-size: var(--font-size-lg);
+        }
+
+        .tip-title {
+            font-weight: var(--font-weight-bold);
+            margin-bottom: var(--space-8);
+            display: flex;
+            align-items: center;
+            gap: var(--space-8);
+        }
+
+        /* Safety Section */
+        .safety-section {
+            background: var(--color-bg-4);
+            border: 2px solid var(--color-error);
+            border-radius: var(--radius-lg);
+            padding: var(--space-32);
+            margin: var(--space-32) 0;
+        }
+
+        .safety-checklist {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-12);
+            margin: var(--space-24) 0;
+        }
+
+        .safety-item {
+            font-size: var(--font-size-lg);
+            padding: var(--space-8);
+            color: var(--color-text);
+        }
+
+        .safety-warning {
+            background: rgba(255, 107, 107, 0.2);
+            border-left: 4px solid #ff6b6b;
+            padding: var(--space-16);
+            margin-top: var(--space-24);
+            font-size: var(--font-size-lg);
+            border-radius: var(--radius-base);
+        }
+
+        /* Floating Button */
+        .floating-btn {
+            position: fixed;
+            bottom: var(--space-24);
+            right: var(--space-24);
+            background: #228be6;
+            color: white;
+            padding: var(--space-16) var(--space-24);
+            border-radius: var(--radius-full);
+            text-decoration: none;
+            font-weight: var(--font-weight-bold);
+            box-shadow: 0 4px 12px rgba(34, 139, 230, 0.4);
+            transition: all var(--duration-fast) var(--ease-standard);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: var(--space-8);
+        }
+
+        .floating-btn:hover {
+            background: #1863a7;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(34, 139, 230, 0.5);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--color-surface);
+            border-top: 1px solid var(--color-border);
+            padding: var(--space-32) var(--space-20);
+            text-align: center;
+            color: var(--color-text-secondary);
+            font-size: var(--font-size-sm);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: var(--font-size-2xl);
+            }
+
+            .header p {
+                font-size: var(--font-size-base);
+            }
+
+            .section-title {
+                font-size: var(--font-size-xl);
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .section-number {
+                width: 40px;
+                height: 40px;
+                font-size: var(--font-size-xl);
+            }
+
+            .images-container {
+                grid-template-columns: 1fr;
+            }
+
+            .nav {
+                gap: var(--space-4);
+            }
+
+            .nav-item {
+                padding: var(--space-6) var(--space-12);
+                font-size: var(--font-size-xs);
+            }
+
+            .floating-btn {
+                bottom: var(--space-16);
+                right: var(--space-16);
+                padding: var(--space-12) var(--space-16);
+                font-size: var(--font-size-sm);
+            }
+
+            .safety-checklist {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>Faça Você Mesmo</h1>
+        <p>Guia Prático de Reparos com Gesso e Drywall</p>
+    </header>
+
+    <nav class="nav-container">
+        <div class="nav">
+            <a href="#intro" class="nav-item" data-section="intro">Introdução</a>
+            <a href="#rachaduras" class="nav-item" data-section="rachaduras">Rachaduras</a>
+            <a href="#drywall" class="nav-item" data-section="drywall">Drywall</a>
+            <a href="#moldura" class="nav-item" data-section="moldura">Moldura</a>
+            <a href="#pintura" class="nav-item" data-section="pintura">Pintura</a>
+            <a href="#seguranca" class="nav-item" data-section="seguranca">Segurança</a>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <!-- SEÇÃO 1: INTRO -->
+        <section id="intro" class="section">
+            <h2 class="section-title">
+                <span class="section-number">💡</span>
+                Mitos Sobre Reparos em Drywall - Você Pode Fazer!
+            </h2>
+            
+            <div class="section-content">
+                <p>Muitas pessoas acreditam que reparos em drywall e gesso requerem um profissional especializado e caro. A verdade é que pequenos reparos são totalmente viáveis para qualquer pessoa, desde que você siga as instruções básicas e use o equipamento de proteção apropriado. Não é preciso ser um mestre de obras - apenas paciência, atenção aos detalhes e vontade de aprender.</p>
+            </div>
+
+            <div class="images-container">
+                <div class="image-wrapper">
+                    <img src=imgs/001.png alt="Ferramentas para reparo de drywall">
+                </div>
+                <div class="image-wrapper">
+                    <img src=imgs/002.png alt="Área preparada para reparo">
+                </div>
+            </div>
+
+            <div class="alert-box">
+                <span class="alert-icon">⚠️</span>
+                <strong>SEGURANÇA EM PRIMEIRO LUGAR</strong> - Use sempre equipamento de proteção individual (EPI): luvas, óculos de proteção, máscara respiratória e roupas adequadas. Não trabalhe em altura sem escadas/andaimes seguros.
+            </div>
+        </section>
+
+        <!-- SEÇÃO 2: RACHADURAS -->
+        <section id="rachaduras" class="section">
+            <h2 class="section-title">
+                <span class="section-number">1</span>
+                Cobrindo Rachaduras com Massa Corrida
+            </h2>
+
+            <div class="section-content">
+                <p>Rachaduras pequenas e superficiais podem ser facilmente reparadas com massa corrida ou massa específica para drywall. Este é geralmente o primeiro passo para restaurar uma superfície danificada.</p>
+            </div>
+
+            <div class="materials-box">
+                <h3 class="materials-title">📋 Materiais Necessários</h3>
+                <ul class="materials-list">
+                    <li>Massa corrida ou massa de drywall</li>
+                    <li>Espátula de 20-30cm</li>
+                    <li>Lixa (granulação 120 ou 150)</li>
+                    <li>Pano úmido</li>
+                    <li>Luvas de proteção</li>
+                    <li>Máscara respiratória</li>
+                </ul>
+            </div>
+
+            <div class="images-container">
+                <div class="image-wrapper">
+                    <img src="imgs/003.png" alt="Aplicação de massa corrida">
+                </div>
+                <div class="image-wrapper">
+                    <img src="imgs/004.png" alt="Rachadura sendo reparada">
+                </div>
+            </div>
+
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">Limpe a rachadura removendo sujeira e tinta solta com lixa</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">Limpe com um pano úmido e deixe secar completamente</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">Aplique a massa corrida com a espátula, preenchendo bem a fissura</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">Deixe secar conforme instruções da embalagem (geralmente 12-24h)</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <div class="step-content">Lixe o excesso de massa com lixa fina</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">6</div>
+                    <div class="step-content">Se necessário, aplique uma segunda demão e repita o processo</div>
+                </div>
+            </div>
+
+            <div class="tip-box">
+                <div class="tip-title">💡 Dica Profissional</div>
+                <p>A chave é aplicar a massa em camadas finas. Nunca tente preencher tudo de uma vez - isso causará problemas de secagem.</p>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 3: DRYWALL -->
+        <section id="drywall" class="section">
+            <h2 class="section-title">
+                <span class="section-number">2</span>
+                Instalando Placas de Drywall nos Perfis
+            </h2>
+
+            <div class="section-content">
+                <p>A instalação de placas de drywall nos perfis F530 é um processo que exige precisão, mas é perfeitamente viável para quem segue as instruções corretas. Presume-se que os perfis já estejam instalados e nivelados.</p>
+            </div>
+
+            <div class="materials-box">
+                <h3 class="materials-title">📋 Materiais Necessários</h3>
+                <ul class="materials-list">
+                    <li>Placa de drywall (120x180 ou 120x240cm)</li>
+                    <li>Parafusos para drywall (25-30mm)</li>
+                    <li>Furadeira ou parafusadeira</li>
+                    <li>Nível de bolha</li>
+                    <li>Fita métrica</li>
+                    <li>Tesoura ou faca para gesso</li>
+                    <li>Luvas e óculos de proteção</li>
+                    <li>Máscara respiratória</li>
+                </ul>
+            </div>
+
+            <div class="image-wrapper image-single">
+                <img src="imgs/005.png" alt="Instalação de placa de drywall">
+            </div>
+
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">Meça e marque os pontos onde a placa será posicionada</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">Posicione a placa alinhada com o primeiro perfil F530</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">Use o nível para garantir que está perpendicular à superfície</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">Parafuse a placa nos perfis, deixando aproximadamente 15cm entre cada parafuso</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <div class="step-content">Certifique-se de que os parafusos ficam ligeiramente encaixados, não salientes</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">6</div>
+                    <div class="step-content">Corte as bordas extras conforme necessário com faca para gesso</div>
+                </div>
+            </div>
+
+            <div class="alert-box">
+                <span class="alert-icon">⚠️</span>
+                <strong>ATENÇÃO:</strong> Não aperte os parafusos demais - podem danificar ou esmagar a placa de drywall.
+            </div>
+        </section>
+
+        <!-- SEÇÃO 4: MOLDURA -->
+        <section id="moldura" class="section">
+            <h2 class="section-title">
+                <span class="section-number">3</span>
+                Instalando Moldura Decorativa no Forro
+            </h2>
+
+            <div class="section-content">
+                <p>A moldura é o acabamento final que dá um toque profissional ao seu forro de gesso. Após o forro estar pronto e lixado, você pode instalar a moldura decorativa usando massa corrida como agente de fixação.</p>
+            </div>
+
+            <div class="materials-box">
+                <h3 class="materials-title">📋 Materiais Necessários</h3>
+                <ul class="materials-list">
+                    <li>Moldura/rodapé de gesso (120cm)</li>
+                    <li>Massa corrida (como agente colante)</li>
+                    <li>Espátula de 10-15cm</li>
+                    <li>Escada ou andaime</li>
+                    <li>Pano e esponja úmida</li>
+                    <li>Luvas, óculos e máscara</li>
+                </ul>
+            </div>
+
+            <div class="image-wrapper image-single">
+                <img src="imgs/006.png " alt="Instalação de moldura no forro">
+            </div>
+
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">Limpe bem a superfície onde a moldura será colada</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">Aplique uma camada generosa de massa corrida na parte traseira da moldura</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">Posicione a moldura pressionando-a firmemente contra a parede/forro</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">Use o nível para garantir alinhamento perfeito</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <div class="step-content">Limpe o excesso de massa com esponja úmida</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">6</div>
+                    <div class="step-content">Deixe secar completamente (12-24h) antes de qualquer acabamento</div>
+                </div>
+            </div>
+
+            <div class="tip-box">
+                <div class="tip-title">💡 Dica Profissional</div>
+                <p>A massa corrida funciona como um 'adesivo' natural para o gesso. Use o suficiente para que saia um pouco pelas bordas quando pressionada.</p>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 5: PINTURA -->
+        <section id="pintura" class="section">
+            <h2 class="section-title">
+                <span class="section-number">4</span>
+                Pintando com Rolo - Técnica Básica
+            </h2>
+
+            <div class="section-content">
+                <p>A pintura é o acabamento final que transformará seu reparo em algo invisível e profissional. Usar um rolo de pintura adequado e a técnica correta faz toda a diferença no resultado.</p>
+            </div>
+
+            <div class="materials-box">
+                <h3 class="materials-title">📋 Materiais Necessários</h3>
+                <ul class="materials-list">
+                    <li>Tinta adequada para drywall/gesso</li>
+                    <li>Rolo de espuma (6-9mm de espessura)</li>
+                    <li>Bandeja de pintura</li>
+                    <li>Pincel pequeno para cantos</li>
+                    <li>Plástico ou jornal para proteção</li>
+                    <li>Luvas de proteção</li>
+                    <li>Máscara leve</li>
+                </ul>
+            </div>
+
+            <div class="image-wrapper image-single">
+                <img src="imgs/007.png" alt="Pintura com rolo">
+            </div>
+
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">Proteja o chão e móveis com plástico ou jornal</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">Derrame a tinta na bandeja de pintura</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">Mergulhe o rolo na tinta até saturar bem (mas não escorrendo excessivamente)</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">Comece pintando os cantos com o pincel pequeno</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <div class="step-content">Aplique o rolo em movimentos em 'W' ou 'M', depois complete preenchendo</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">6</div>
+                    <div class="step-content">Use pressão constante e movimentos suaves de cima para baixo</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">7</div>
+                    <div class="step-content">Deixe secar a primeira demão e aplique segunda demão conforme necessário</div>
+                </div>
+            </div>
+
+            <div class="tip-box">
+                <div class="tip-title">💡 Dicas Profissionais</div>
+                <ul style="margin: 0; padding-left: 20px;">
+                    <li>Quanto mais fina e uniforme a camada, melhor o resultado final</li>
+                    <li>Não sobrecarregue o rolo com tinta - evita escorrimentos</li>
+                    <li>Sempre pinte de cima para baixo</li>
+                    <li>Aplique 2 demãos para cobertura uniforme</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 6: SEGURANÇA -->
+        <section id="seguranca" class="section">
+            <div class="safety-section">
+                <h2 class="section-title" style="margin-bottom: var(--space-24);">
+                    <span class="section-number">🛡️</span>
+                    Segurança Sempre em Primeiro Lugar
+                </h2>
+
+                <div class="section-content">
+                    <p><strong>Equipamentos de Proteção Individual (EPIs) são essenciais</strong> para qualquer tipo de reparo. Nunca inicie um trabalho sem os equipamentos adequados.</p>
+                </div>
+
+                <div class="safety-checklist">
+                    <div class="safety-item">✓ Luvas de proteção nitrílica</div>
+                    <div class="safety-item">✓ Óculos de segurança com proteção lateral</div>
+                    <div class="safety-item">✓ Máscara respiratória N95 (especialmente ao lixar)</div>
+                    <div class="safety-item">✓ Roupas adequadas (sem mangas soltas)</div>
+                    <div class="safety-item">✓ Sapatos de segurança com solado antiderrapante</div>
+                    <div class="safety-item">✓ Escada/andaime em bom estado e seguro</div>
+                    <div class="safety-item">✓ Área bem ventilada</div>
+                    <div class="safety-item">✓ Kit de primeiros socorros à mão</div>
+                </div>
+
+                <div class="safety-warning">
+                    <strong>⚠️ Quando Procurar Ajuda Profissional:</strong><br><br>
+                    Procure ajuda profissional se: a rachadura for estrutural (em zigzag ou múltiplas), houver infiltração de água, a placa estiver muito danificada, ou você se sentir inseguro a qualquer momento. Sua segurança é mais importante que economizar dinheiro.
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 Guia Faça Você Mesmo - Reparos com Gesso e Drywall</p>
+        <p>Sempre priorize sua segurança e siga as normas técnicas aplicáveis.</p>
+    </footer>
+
+    <a href="#" class="floating-btn" onclick="alert('Retornando à calculadora...'); return false;">
+        ← Voltar à Calculadora
+    </a>
+
+    <script>
+        // Navigation active state
+        const navItems = document.querySelectorAll('.nav-item');
+        const sections = document.querySelectorAll('.section');
+
+        // Update active navigation on scroll
+        function updateActiveNav() {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('data-section') === current) {
+                    item.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', updateActiveNav);
+        
+        // Set initial active state
+        updateActiveNav();
+
+        // Smooth scroll for navigation
+        navItems.forEach(item => {
+            item.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

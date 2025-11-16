@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Orçamento + Guia DIY</title>
+    <style>
+        :root {
+  --color-white: rgba(255, 255, 255, 1);
+  --color-black: rgba(0, 0, 0, 1);
+  --color-cream-50: rgba(252, 252, 249, 1);
+  --color-cream-100: rgba(255, 255, 253, 1);
+  --color-gray-200: rgba(245, 245, 245, 1);
+  --color-gray-300: rgba(167, 169, 169, 1);
+  --color-gray-400: rgba(119, 124, 124, 1);
+  --color-slate-500: rgba(98, 108, 113, 1);
+  --color-brown-600: rgba(94, 82, 64, 1);
+  --color-charcoal-700: rgba(31, 33, 33, 1);
+  --color-charcoal-800: rgba(38, 40, 40, 1);
+  --color-slate-900: rgba(19, 52, 59, 1);
+  --color-teal-300: rgba(50, 184, 198, 1);
+  --color-teal-400: rgba(45, 166, 178, 1);
+  --color-teal-500: rgba(33, 128, 141, 1);
+  --color-teal-600: rgba(29, 116, 128, 1);
+  --color-teal-700: rgba(26, 104, 115, 1);
+  --color-teal-800: rgba(41, 150, 161, 1);
+  --color-red-400: rgba(255, 84, 89, 1);
+  --color-red-500: rgba(192, 21, 47, 1);
+  --color-orange-400: rgba(230, 129, 97, 1);
+  --color-orange-500: rgba(168, 75, 47, 1);
+  --color-brown-600-rgb: 94, 82, 64;
+  --color-teal-500-rgb: 33, 128, 141;
+  --color-slate-900-rgb: 19, 52, 59;
+  --color-slate-500-rgb: 98, 108, 113;
+  --color-red-500-rgb: 192, 21, 47;
+  --color-red-400-rgb: 255, 84, 89;
+  --color-orange-500-rgb: 168, 75, 47;
+  --color-orange-400-rgb: 230, 129, 97;
+  --color-bg-1: rgba(59, 130, 246, 0.08);
+  --color-bg-2: rgba(245, 158, 11, 0.08);
+  --color-bg-3: rgba(34, 197, 94, 0.08);
+  --color-bg-4: rgba(239, 68, 68, 0.08);
+  --color-bg-5: rgba(147, 51, 234, 0.08);
+  --color-bg-6: rgba(249, 115, 22, 0.08);
+  --color-bg-7: rgba(236, 72, 153, 0.08);
+  --color-bg-8: rgba(6, 182, 212, 0.08);
+  --color-background: var(--color-cream-50);
+  --color-surface: var(--color-cream-100);
+  --color-text: var(--color-slate-900);
+  --color-text-secondary: var(--color-slate-500);
+  --color-primary: var(--color-teal-500);
+  --color-primary-hover: var(--color-teal-600);
+  --color-primary-active: var(--color-teal-700);
+  --color-secondary: rgba(var(--color-brown-600-rgb), 0.12);
+  --color-secondary-hover: rgba(var(--color-brown-600-rgb), 0.2);
+  --color-secondary-active: rgba(var(--color-brown-600-rgb), 0.25);
+  --color-border: rgba(var(--color-brown-600-rgb), 0.2);
+  --color-btn-primary-text: var(--color-cream-50);
+  --color-card-border: rgba(var(--color-brown-600-rgb), 0.12);
+  --color-card-border-inner: rgba(var(--color-brown-600-rgb), 0.12);
+  --color-error: var(--color-red-500);
+  --color-success: var(--color-teal-500);
+  --color-warning: var(--color-orange-500);
+  --color-info: var(--color-slate-500);
+  --color-focus-ring: rgba(var(--color-teal-500-rgb), 0.4);
+  --color-select-caret: rgba(var(--color-slate-900-rgb), 0.8);
+  --focus-ring: 0 0 0 3px var(--color-focus-ring);
+  --focus-outline: 2px solid var(--color-primary);
+  --status-bg-opacity: 0.15;
+  --status-border-opacity: 0.25;
+  --select-caret-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23134252' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  --select-caret-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23f5f5f5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  --color-success-rgb: 33, 128, 141;
+  --color-error-rgb: 192, 21, 47;
+  --color-warning-rgb: 168, 75, 47;
+  --color-info-rgb: 98, 108, 113;
+  --font-family-base: "FKGroteskNeue", "Geist", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-family-mono: "Berkeley Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --font-size-xs: 11px;
+  --font-size-sm: 12px;
+  --font-size-base: 14px;
+  --font-size-md: 14px;
+  --font-size-lg: 16px;
+  --font-size-xl: 18px;
+  --font-size-2xl: 20px;
+  --font-size-3xl: 24px;
+  --font-size-4xl: 30px;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 550;
+  --font-weight-bold: 600;
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+  --letter-spacing-tight: -0.01em;
+  --space-0: 0;
+  --space-1: 1px;
+  --space-2: 2px;
+  --space-4: 4px;
+  --space-6: 6px;
+  --space-8: 8px;
+  --space-10: 10px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-20: 20px;
+  --space-24: 24px;
+  --space-32: 32px;
+  --radius-sm: 6px;
+  --radius-base: 8px;
+  --radius-md: 10px;
+  --radius-lg: 12px;
+  --radius-full: 9999px;
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.02);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.04), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.04), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
+  --shadow-inset-sm: inset 0 1px 0 rgba(255, 255, 255, 0.15), inset 0 -1px 0 rgba(0, 0, 0, 0.03);
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --ease-standard: cubic-bezier(0.16, 1, 0.3, 1);
+  --container-sm: 640px;
+  --container-md: 768px;
+  --container-lg: 1024px;
+  --container-xl: 1280px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-gray-400-rgb: 119, 124, 124;
+    --color-teal-300-rgb: 50, 184, 198;
+    --color-gray-300-rgb: 167, 169, 169;
+    --color-gray-200-rgb: 245, 245, 245;
+    --color-bg-1: rgba(29, 78, 216, 0.15);
+    --color-bg-2: rgba(180, 83, 9, 0.15);
+    --color-bg-3: rgba(21, 128, 61, 0.15);
+    --color-bg-4: rgba(185, 28, 28, 0.15);
+    --color-bg-5: rgba(107, 33, 168, 0.15);
+    --color-bg-6: rgba(194, 65, 12, 0.15);
+    --color-bg-7: rgba(190, 24, 93, 0.15);
+    --color-bg-8: rgba(8, 145, 178, 0.15);
+    --color-background: var(--color-charcoal-700);
+    --color-surface: var(--color-charcoal-800);
+    --color-text: var(--color-gray-200);
+    --color-text-secondary: rgba(var(--color-gray-300-rgb), 0.7);
+    --color-primary: var(--color-teal-300);
+    --color-primary-hover: var(--color-teal-400);
+    --color-primary-active: var(--color-teal-800);
+    --color-secondary: rgba(var(--color-gray-400-rgb), 0.15);
+    --color-secondary-hover: rgba(var(--color-gray-400-rgb), 0.25);
+    --color-secondary-active: rgba(var(--color-gray-400-rgb), 0.3);
+    --color-border: rgba(var(--color-gray-400-rgb), 0.3);
+    --color-error: var(--color-red-400);
+    --color-success: var(--color-teal-300);
+    --color-warning: var(--color-orange-400);
+    --color-info: var(--color-gray-300);
+    --color-focus-ring: rgba(var(--color-teal-300-rgb), 0.4);
+    --color-btn-primary-text: var(--color-slate-900);
+    --color-card-border: rgba(var(--color-gray-400-rgb), 0.2);
+    --color-card-border-inner: rgba(var(--color-gray-400-rgb), 0.15);
+    --shadow-inset-sm: inset 0 1px 0 rgba(255, 255, 255, 0.1), inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+    --button-border-secondary: rgba(var(--color-gray-400-rgb), 0.2);
+    --color-border-secondary: rgba(var(--color-gray-400-rgb), 0.2);
+    --color-select-caret: rgba(var(--color-gray-200-rgb), 0.8);
+    --color-success-rgb: var(--color-teal-300-rgb);
+    --color-error-rgb: var(--color-red-400-rgb);
+    --color-warning-rgb: var(--color-orange-400-rgb);
+    --color-info-rgb: var(--color-gray-300-rgb);
+  }
+}
+
+@font-face {
+  font-family: 'FKGroteskNeue';
+  src: url('https://r2cdn.perplexity.ai/fonts/FKGroteskNeue.woff2') format('woff2');
+}
+
+html {
+  font-size: var(--font-size-base);
+  font-family: var(--font-family-base);
+  line-height: var(--line-height-normal);
+  color: var(--color-text);
+  background-color: var(--color-background);
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+/* Custom Styles */
+.header {
+    background: var(--color-primary);
+    color: var(--color-white);
+    padding: var(--space-24) var(--space-16);
+    text-align: center;
+    box-shadow: var(--shadow-lg);
+}
+
+.header h1 {
+    margin: 0;
+    font-size: var(--font-size-4xl);
+    color: var(--color-white);
+}
+
+.header p {
+    margin: var(--space-8) 0 0 0;
+    font-size: var(--font-size-lg);
+    color: var(--color-white);
+    opacity: 0.95;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--space-24) var(--space-16);
+}
+
+/* DIY Card with Pulse Animation */
+.diy-card {
+    background: linear-gradient(135deg, #228be6 0%, #15aabf 100%);
+    border-radius: var(--radius-lg);
+    padding: var(--space-32);
+    margin-bottom: var(--space-32);
+    box-shadow: 0 10px 30px rgba(34, 139, 230, 0.3);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    animation: pulseCard 3s ease-in-out infinite;
+}
+
+@keyframes pulseCard {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 10px 30px rgba(34, 139, 230, 0.3);
+    }
+    50% {
+        transform: scale(1.02);
+        box-shadow: 0 15px 40px rgba(34, 139, 230, 0.4);
+    }
+}
+
+.diy-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+    animation: rotate 10s linear infinite;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.diy-card-content {
+    position: relative;
+    z-index: 1;
+}
+
+.diy-icon {
+    font-size: 48px;
+    margin-bottom: var(--space-16);
+    display: block;
+}
+
+.diy-card h2 {
+    color: var(--color-white);
+    margin: 0 0 var(--space-8) 0;
+    font-size: var(--font-size-3xl);
+}
+
+.diy-card h3 {
+    color: var(--color-white);
+    margin: 0 0 var(--space-16) 0;
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-medium);
+    opacity: 0.9;
+}
+
+.diy-card p {
+    color: var(--color-white);
+    margin: 0 0 var(--space-24) 0;
+    font-size: var(--font-size-lg);
+    opacity: 0.95;
+    line-height: 1.6;
+}
+
+.diy-btn {
+    background: var(--color-white);
+    color: #1a5c7a;
+    padding: var(--space-16) var(--space-32);
+    border-radius: var(--radius-base);
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+    text-decoration: none;
+    transition: all var(--duration-normal) var(--ease-standard);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.diy-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+    background: rgba(255,255,255,0.95);
+}
+
+/* Calculator Section */
+.calculator-section {
+    background: var(--color-surface);
+    border-radius: var(--radius-lg);
+    padding: var(--space-32);
+    margin-bottom: var(--space-32);
+    border: 1px solid var(--color-card-border);
+    box-shadow: var(--shadow-sm);
+}
+
+.calculator-section h2 {
+    margin-top: 0;
+    color: var(--color-text);
+    font-size: var(--font-size-3xl);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-16);
+    margin-bottom: var(--space-16);
+}
+
+.form-group {
+    margin-bottom: var(--space-16);
+}
+
+.form-label {
+    display: block;
+    margin-bottom: var(--space-8);
+    font-weight: var(--font-weight-medium);
+    font-size: var(--font-size-base);
+    color: var(--color-text);
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    padding: var(--space-12);
+    font-size: var(--font-size-base);
+    line-height: 1.5;
+    color: var(--color-text);
+    background-color: var(--color-background);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-base);
+    transition: border-color var(--duration-fast) var(--ease-standard);
+}
+
+.form-control:focus {
+    border-color: var(--color-primary);
+    outline: var(--focus-outline);
+}
+
+select.form-control {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: var(--select-caret-light);
+    background-repeat: no-repeat;
+    background-position: right var(--space-12) center;
+    background-size: 16px;
+    padding-right: var(--space-32);
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-12) var(--space-24);
+    border-radius: var(--radius-base);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-medium);
+    cursor: pointer;
+    transition: all var(--duration-normal) var(--ease-standard);
+    border: none;
+    text-decoration: none;
+}
+
+.btn--primary {
+    background: var(--color-primary);
+    color: var(--color-btn-primary-text);
+}
+
+.btn--primary:hover {
+    background: var(--color-primary-hover);
+}
+
+.btn--secondary {
+    background: var(--color-secondary);
+    color: var(--color-text);
+}
+
+.btn--secondary:hover {
+    background: var(--color-secondary-hover);
+}
+
+.btn-group {
+    display: flex;
+    gap: var(--space-12);
+    flex-wrap: wrap;
+}
+
+/* Results */
+.results {
+    margin-top: var(--space-24);
+    display: none;
+}
+
+.results.show {
+    display: block;
+}
+
+.results-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: var(--space-16);
+    background: var(--color-background);
+    border-radius: var(--radius-base);
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+}
+
+.results-table th,
+.results-table td {
+    padding: var(--space-12);
+    text-align: left;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.results-table th {
+    background: var(--color-secondary);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text);
+}
+
+.results-table tr:last-child td {
+    border-bottom: none;
+}
+
+.results-table tr:hover {
+    background: var(--color-secondary);
+}
+
+.total-row {
+    font-weight: var(--font-weight-bold);
+    background: var(--color-bg-1) !important;
+}
+
+.variation-note {
+    margin-top: var(--space-16);
+    padding: var(--space-16);
+    background: var(--color-bg-2);
+    border-left: 4px solid var(--color-warning);
+    border-radius: var(--radius-base);
+    font-size: var(--font-size-sm);
+}
+
+/* DIY Guide Section */
+.guide-section {
+    background: var(--color-surface);
+    border-radius: var(--radius-lg);
+    padding: var(--space-32);
+    margin-bottom: var(--space-32);
+    border: 1px solid var(--color-card-border);
+    box-shadow: var(--shadow-sm);
+}
+
+.guide-section h2 {
+    color: var(--color-text);
+    margin-top: 0;
+    font-size: var(--font-size-3xl);
+    border-bottom: 3px solid var(--color-primary);
+    padding-bottom: var(--space-12);
+}
+
+.guide-section h3 {
+    color: var(--color-text);
+    margin-top: var(--space-32);
+    font-size: var(--font-size-2xl);
+}
+
+.guide-section h4 {
+    color: var(--color-text);
+    margin-top: var(--space-24);
+    font-size: var(--font-size-xl);
+}
+
+.safety-alert {
+    background: var(--color-bg-4);
+    border-left: 4px solid var(--color-error);
+    padding: var(--space-16);
+    margin: var(--space-16) 0;
+    border-radius: var(--radius-base);
+}
+
+.safety-alert h4 {
+    margin-top: 0;
+    color: var(--color-error);
+    display: flex;
+    align-items: center;
+    gap: var(--space-8);
+}
+
+.info-box {
+    background: var(--color-bg-1);
+    border-left: 4px solid var(--color-primary);
+    padding: var(--space-16);
+    margin: var(--space-16) 0;
+    border-radius: var(--radius-base);
+}
+
+.materials-list {
+    background: var(--color-bg-3);
+    padding: var(--space-16);
+    border-radius: var(--radius-base);
+    margin: var(--space-16) 0;
+}
+
+.materials-list h4 {
+    margin-top: 0;
+    color: var(--color-success);
+}
+
+.materials-list ul {
+    margin: var(--space-8) 0;
+    padding-left: var(--space-24);
+}
+
+.materials-list li {
+    margin-bottom: var(--space-8);
+}
+
+.step-section {
+    margin: var(--space-32) 0;
+    padding: var(--space-24);
+    background: var(--color-background);
+    border-radius: var(--radius-base);
+    border: 1px solid var(--color-border);
+}
+
+.step-image {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    border-radius: var(--radius-base);
+    margin: var(--space-16) 0;
+    border: 2px solid var(--color-border);
+    display: block;
+}
+
+.step-instructions ol {
+    padding-left: var(--space-24);
+    line-height: 1.8;
+}
+
+.step-instructions li {
+    margin-bottom: var(--space-12);
+}
+
+.tips-box {
+    background: var(--color-bg-2);
+    padding: var(--space-16);
+    border-radius: var(--radius-base);
+    margin: var(--space-16) 0;
+}
+
+.tips-box h5 {
+    margin-top: 0;
+    color: var(--color-warning);
+}
+
+@media (max-width: 768px) {
+    .diy-card {
+        padding: var(--space-24);
+        width: 95%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .container {
+        padding: var(--space-16);
+    }
+    
+    .calculator-section,
+    .guide-section {
+        padding: var(--space-20);
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .btn-group {
+        flex-direction: column;
+    }
+    
+    .btn {
+        width: 100%;
+    }
+}
+
+@media print {
+    .diy-card,
+    .btn,
+    .form-group,
+    .guide-section {
+        display: none;
+    }
+    
+    .results {
+        display: block !important;
+    }
+}
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>🏠 Calculadora de Orçamento + Guia DIY</h1>
+        <p>Calcule seu orçamento ou aprenda a fazer você mesmo</p>
+    </header>
+
+    <div class="container">
+        <!-- DIY Prominent Card -->
+        <div class="diy-card" id="diy-card">
+            <div class="diy-card-content">
+                <span class="diy-icon">🛠️</span>
+                <h2>Quer Fazer Você Mesmo?</h2>
+                <h3>Guia Passo-a-Passo para Reparos DIY</h3>
+                <p>Acesse nosso guia completo com instruções simples, listas de materiais e dicas essenciais de segurança para pequenos reparos em gesso e drywall.</p>
+                <button class="diy-btn" onclick="scrollToGuide()">Ver Guia de Reparos 🛠️</button>
+            </div>
+        </div>
+
+        <!-- Calculator Section -->
+        <section class="calculator-section" id="calculator">
+            <h2>📊 Calculadora de Orçamento</h2>
+            
+            <form id="calculatorForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label" for="largura">Largura (metros)</label>
+                        <input type="number" class="form-control" id="largura" step="0.01" min="0" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="comprimento">Comprimento (metros)</label>
+                        <input type="number" class="form-control" id="comprimento" step="0.01" min="0" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label" for="tipoServico">Tipo de Serviço</label>
+                        <select class="form-control" id="tipoServico" required>
+                            <option value="">Selecione...</option>
+                            <option value="forro">Forro de Gesso</option>
+                            <option value="parede">Parede Drywall</option>
+                            <option value="divisoria">Divisória</option>
+                            <option value="rebaixamento">Rebaixamento de Teto</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="tipoPlaca">Tipo de Placa</label>
+                        <select class="form-control" id="tipoPlaca" required>
+                            <option value="">Selecione...</option>
+                            <option value="standard">Standard (ST)</option>
+                            <option value="rfu">Resistente ao Fogo (RU)</option>
+                            <option value="ru">Resistente à Umidade (RU)</option>
+                            <option value="rfru">RF + RU</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="btn-group">
+                    <button type="submit" class="btn btn--primary">Calcular Orçamento</button>
+                    <button type="button" class="btn btn--secondary" onclick="limparFormulario()">Limpar</button>
+                </div>
+            </form>
+
+            <div class="results" id="results">
+                <h3>Resultados do Orçamento</h3>
+                
+                <table class="results-table" id="resultsTable">
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Quantidade</th>
+                            <th>Preço Unit. (R$)</th>
+                            <th>Subtotal (R$)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="resultsBody">
+                    </tbody>
+                </table>
+
+                <div class="variation-note">
+                    <strong>⚠️ Nota:</strong> Os valores podem variar ±20% dependendo da região, fornecedor e condições do mercado.
+                </div>
+
+                <div class="btn-group" style="margin-top: var(--space-16);">
+                    <button class="btn btn--primary" onclick="window.print()">🖨️ Imprimir Orçamento</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- DIY Guide Section -->
+        <section class="guide-section" id="guide">
+            <h2>🛠️ Guia DIY - Reparos Pequenos em Gesso e Drywall</h2>
+
+            <!-- Introduction -->
+            <div class="info-box">
+                <p><strong>Desmistificando os reparos:</strong> Muitas pessoas acreditam que qualquer reparo em gesso ou drywall requer a contratação de um profissional especializado. No entanto, pequenos reparos podem ser realizados por você mesmo, economizando tempo e dinheiro. Com as ferramentas certas e seguindo instruções simples, é possível corrigir rachaduras, furos e imperfeições com resultado profissional.</p>
+            </div>
+
+            <!-- Safety Alert -->
+            <div class="safety-alert">
+                <h4>⚠️ SEGURANÇA EM PRIMEIRO LUGAR</h4>
+                <p><strong>Antes de iniciar qualquer reparo, é fundamental:</strong></p>
+                <ul>
+                    <li><strong>Use EPIs (Equipamentos de Proteção Individual):</strong> Óculos de proteção, luvas de trabalho, máscara PFF2 para evitar inalação de poeira</li>
+                    <li><strong>Desligue a energia elétrica:</strong> Se for trabalhar próximo a tomadas ou interruptores</li>
+                    <li><strong>Ventile o ambiente:</strong> Mantenha janelas abertas durante e após o trabalho</li>
+                    <li><strong>Proteja o piso:</strong> Use lonas ou plásticos para facilitar a limpeza</li>
+                    <li><strong>Verifique a estrutura:</strong> Em caso de danos estruturais sérios, consulte um profissional</li>
+                    <li><strong>Cuidado com a poeira:</strong> A poeira de gesso pode irritar olhos e vias respiratórias</li>
+                </ul>
+            </div>
+
+            <!-- Step 1: Covering Cracks -->
+            <div class="step-section">
+                <h3>1. Como Cobrir Rachaduras com Massa Corrida ou Massa de Drywall</h3>
+                
+                <div class="materials-list">
+                    <h4>✓ Materiais Necessários:</h4>
+                    <ul>
+                        <li>Massa corrida ou massa para drywall</li>
+                        <li>Espátula de aço (8cm e 12cm)</li>
+                        <li>Lixa para parede (grãos 120 e 220)</li>
+                        <li>Trincha ou pincel para limpeza</li>
+                        <li>Esponja úmida</li>
+                        <li>Fita de papel ou fita de auto-fusão (para rachaduras maiores)</li>
+                        <li>EPIs: óculos, máscara PFF2, luvas</li>
+                    </ul>
+                </div>
+
+                <div class="step-instructions">
+                    <p><strong>Passo a passo:</strong></p>
+                    <ol>
+                        <li><strong>Preparação:</strong> Limpe bem a área da rachadura, removendo poeira, sujeira e partes soltas com uma trincha ou escova. Use uma espátula para alargar levemente a rachadura em formato de "V", isso ajuda a massa a aderir melhor.</li>
+                        
+                        <li><strong>Aplicação da fita (se necessário):</strong> Para rachaduras maiores que 2mm, aplique uma fita de papel ou auto-fusão sobre a rachadura. Isso evita que ela reabra no futuro.</li>
+                        
+                        <li><strong>Primeira camada de massa:</strong> Com a espátula de 8cm, aplique a massa corrida ou massa de drywall sobre a rachadura, pressionando bem para preencher completamente. Faça movimentos firmes e uniformes, alisando a superfície.</li>
+                        
+                        <li><strong>Secagem:</strong> Aguarde a secagem completa conforme instruções do fabricante (geralmente 4 a 6 horas). A massa muda de cor ao secar, ficando mais clara.</li>
+                        
+                        <li><strong>Lixamento:</strong> Após a secagem, lixe suavemente com lixa grão 120, fazendo movimentos circulares. Remova o pó com esponja úmida.</li>
+                        
+                        <li><strong>Segunda camada (se necessário):</strong> Se ainda houver imperfeições, aplique uma segunda camada fina de massa com a espátula de 12cm. Aguarde secar e lixe com lixa grão 220 para acabamento fino.</li>
+                        
+                        <li><strong>Acabamento:</strong> Limpe toda a poeira com pano úmido. A superfície está pronta para receber pintura.</li>
+                    </ol>
+                </div>
+
+                <div class="tips-box">
+                    <h5>💡 Dicas Profissionais:</h5>
+                    <ul>
+                        <li>Trabalhe com camadas finas - é melhor aplicar duas camadas finas do que uma grossa</li>
+                        <li>Mantenha a espátula sempre limpa entre as aplicações</li>
+                        <li>Em dias úmidos, o tempo de secagem pode ser maior</li>
+                        <li>Para rachaduras estruturais repetitivas, consulte um engenheiro</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Step 2: Installing Drywall Plate -->
+            <div class="step-section">
+                <h3>2. Como Instalar uma Placa de Drywall nos Perfis F530</h3>
+                
+                <div class="materials-list">
+                    <h4>✓ Materiais Necessários:</h4>
+                    <ul>
+                        <li>Placa de drywall (tamanho apropriado)</li>
+                        <li>Parafusos para drywall 3,5 x 25mm (tipo fosfatizado)</li>
+                        <li>Parafusadeira elétrica com bit Phillips</li>
+                        <li>Estilete ou serra copo para drywall</li>
+                        <li>Trena e lápis</li>
+                        <li>Esquadro ou régua</li>
+                        <li>Nível a laser ou nível de bolha</li>
+                        <li>EPIs: óculos, máscara, luvas</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <p><strong>Pré-requisito:</strong> Este guia assume que os perfis metálicos F530 (montantes e guias) já estão instalados corretamente, nivelados e fixados na estrutura.</p>
+                </div>
+
+                <div class="step-instructions">
+                    <p><strong>Passo a passo:</strong></p>
+                    <ol>
+                        <li><strong>Medição e corte:</strong> Meça com precisão a área onde a placa será instalada. Marque as medidas na placa de drywall com lápis e régua. Para cortar, use estilete: faça um corte na face da placa seguindo a linha, quebre a placa dobrando, e corte o papel verso.</li>
+                        
+                        <li><strong>Posicionamento:</strong> Posicione a placa contra os perfis F530. Em instalações de parede, comece pelo topo. Certifique-se de que as bordas da placa estejam centralizadas sobre os perfis (mínimo 10mm de cada lado do perfil).</li>
+                        
+                        <li><strong>Verificação de nível:</strong> Use o nível para garantir que a placa esteja perfeitamente alinhada antes de fixar. Ajuste se necessário.</li>
+                        
+                        <li><strong>Fixação - primeira linha:</strong> Inicie a fixação pelo centro da placa e vá para as extremidades. Comece a 1,5cm da borda. Use a parafusadeira regulada para que os parafusos fiquem ligeiramente abaixo da superfície (1mm), sem romper o papel.</li>
+                        
+                        <li><strong>Espaçamento dos parafusos:</strong> Mantenha espaçamento de 25cm a 30cm entre parafusos ao longo dos perfis. Nas bordas verticais e horizontais, use espaçamento de 20cm. No centro da placa, espaçamento pode ser de 40cm.</li>
+                        
+                        <li><strong>Verificação:</strong> Após fixação completa, verifique se todos os parafusos estão no nível correto (nem salientes, nem muito fundos). Parafusos salientes devem ser reaproveitados em novo local.</li>
+                        
+                        <li><strong>Juntas:</strong> Deixe um espaço mínimo de 3mm entre placas adjacentes para posterior tratamento de juntas. Nunca encoste as placas uma na outra.</li>
+                    </ol>
+                </div>
+
+                <div class="tips-box">
+                    <h5>💡 Dicas Profissionais:</h5>
+                    <ul>
+                        <li>Sempre fixe com a placa apoiada - nunca segure no ar durante a parafusação</li>
+                        <li>Se um parafuso romper o papel, remova-o e coloque outro a 5cm de distância</li>
+                        <li>Use bits magnéticos para facilitar o trabalho</li>
+                        <li>Para áreas úmidas, use placas RU (resistentes à umidade) - identificadas pela cor verde</li>
+                        <li>Placas podem ser instaladas na vertical ou horizontal, conforme necessidade</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Step 3: Installing Crown Molding -->
+            <div class="step-section">
+                <h3>3. Como Instalar Moldura no Forro Pronto</h3>
+                
+                <div class="materials-list">
+                    <h4>✓ Materiais Necessários:</h4>
+                    <ul>
+                        <li>Moldura de gesso ou poliestireno (sanca)</li>
+                        <li>Massa corrida ou cola específica para molduras</li>
+                        <li>Espátula média (12cm)</li>
+                        <li>Trena e lápis</li>
+                        <li>Serra de esquadria ou estilete (para cortes)</li>
+                        <li>Lixa fina (grão 220)</li>
+                        <li>Pano úmido</li>
+                        <li>Suportes temporários ou fita adesiva forte</li>
+                        <li>EPIs: óculos, máscara, luvas</li>
+                    </ul>
+                </div>
+
+                <div class="step-instructions">
+                    <p><strong>Passo a passo:</strong></p>
+                    <ol>
+                        <li><strong>Preparação da superfície:</strong> Limpe bem a área do encontro entre parede e forro, removendo poeira, gordura ou resíduos. A superfície deve estar seca, limpa e firme para garantir boa aderência.</li>
+                        
+                        <li><strong>Medição:</strong> Meça o comprimento das paredes onde a moldura será instalada. Adicione 2-3cm a mais em cada ponta para ajustes. Marque os pontos de corte com lápis.</li>
+                        
+                        <li><strong>Corte dos cantos:</strong> Nos cantos, faça cortes em ângulo de 45° usando serra de esquadria. Para encontros retos, corte a 90°. Teste o encaixe antes de colar para garantir que os cantos ficam perfeitos.</li>
+                        
+                        <li><strong>Aplicação da massa corrida:</strong> Este é o diferencial - use massa corrida como agente colante. Aplique uma camada generosa (3-5mm) de massa corrida no verso da moldura, nas duas faces que terão contato (parede e forro). Use a espátula para espalhar uniformemente.</li>
+                        
+                        <li><strong>Instalação:</strong> Pressione a moldura firmemente contra a parede e forro, posicionando-a exatamente no ângulo. A massa corrida irá extravasar pelas bordas - isso é normal e desejado. Mantenha pressão firme por 30 segundos.</li>
+                        
+                        <li><strong>Fixação temporária:</strong> Use suportes improvisados (pode ser fita adesiva forte ou pequenos pregos temporários) para manter a moldura no lugar enquanto a massa seca. Não solte até ter certeza que está firme.</li>
+                        
+                        <li><strong>Limpeza do excesso:</strong> Com a espátula, remova o excesso de massa que extravasou, alisando as bordas. Use a massa que sobra para preencher qualquer vão ou imperfeição nas juntas.</li>
+                        
+                        <li><strong>Secagem:</strong> Aguarde 24 horas para secagem completa. Não force ou encoste na moldura durante este período.</li>
+                        
+                        <li><strong>Acabamento:</strong> Após seco, faça lixamento suave nas juntas com lixa fina. Limpe a poeira com pano úmido. Aplique uma fina camada de massa nas emendas se necessário, aguarde secar e lixe novamente.</li>
+                        
+                        <li><strong>Pintura:</strong> A moldura está pronta para receber pintura, seguindo as mesmas técnicas da parede/forro.</li>
+                    </ol>
+                </div>
+
+                <div class="tips-box">
+                    <h5>💡 Dicas Profissionais:</h5>
+                    <ul>
+                        <li>A massa corrida é excelente agente colante para molduras leves - é mais econômico e eficiente que colas especiais</li>
+                        <li>Para molduras mais pesadas, combine massa corrida com parafusos discretos</li>
+                        <li>Trabalhe uma parede por vez para melhor controle</li>
+                        <li>Nos cantos, é comum precisar ajustar os ângulos - faça testes antes de aplicar massa</li>
+                        <li>Em ambientes úmidos, adicione um pouco de cola branca à massa para maior aderência</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Step 4: Painting -->
+            <div class="step-section">
+                <h3>4. Como Pintar uma Parede com Rolo</h3>
+                
+                <div class="materials-list">
+                    <h4>✓ Materiais Necessários:</h4>
+                    <ul>
+                        <li>Tinta látex ou acrílica (quantidade calculada: 1L para cada 10-12m²)</li>
+                        <li>Rolo de pintura de lã ou espuma (tamanho 23cm)</li>
+                        <li>Bandeja para tinta</li>
+                        <li>Pincel ou trincha (para cantos e acabamentos)</li>
+                        <li>Fita crepe para proteção</li>
+                        <li>Lona ou plástico para proteger o chão</li>
+                        <li>Lixa fina (grão 220) para preparação</li>
+                        <li>Pano úmido</li>
+                        <li>Extensor para rolo (opcional, para áreas altas)</li>
+                        <li>EPIs: óculos, máscara, roupas velhas</li>
+                    </ul>
+                </div>
+
+                <div class="step-instructions">
+                    <p><strong>Passo a passo:</strong></p>
+                    <ol>
+                        <li><strong>Preparação do ambiente:</strong> Cubra o piso com lona ou plástico. Proteja rodapés, marcos de portas e janelas com fita crepe. Remova ou cubra móveis. Ventile o ambiente abrindo janelas.</li>
+                        
+                        <li><strong>Preparação da superfície:</strong> A parede deve estar limpa, seca e sem imperfeições. Lixe suavemente toda a superfície com lixa fina para remover irregularidades e melhorar a aderência. Limpe o pó com pano úmido e aguarde secar completamente.</li>
+                        
+                        <li><strong>Preparação da tinta:</strong> Abra a lata e misture bem a tinta com uma espátula ou bastão. Se necessário, dilua conforme instruções do fabricante (geralmente 5-10% de água para látex). Misture até ficar homogênea.</li>
+                        
+                        <li><strong>Primeira camada - cantos e bordas:</strong> Use pincel ou trincha para pintar primeiro os cantos, rodapés e áreas próximas ao teto (técnica chamada de "recorte" ou "corte"). Faça uma faixa de 5-8cm de largura. Isso facilita o trabalho com o rolo depois.</li>
+                        
+                        <li><strong>Carregando o rolo:</strong> Despeje tinta na bandeja até cerca de 1/3 da profundidade. Mergulhe o rolo na tinta e role na parte inclinada da bandeja várias vezes para distribuir uniformemente e remover excesso. O rolo deve estar úmido, mas não escorrendo.</li>
+                        
+                        <li><strong>Técnica de pintura com rolo:</strong> Comece pelo topo da parede. Aplique a tinta em movimentos de "W" ou "M" para distribuir, depois passe o rolo em movimentos verticais uniformes de cima para baixo, sobrepondo levemente cada passada. Não pressione demais o rolo.</li>
+                        
+                        <li><strong>Cobertura uniforme:</strong> Trabalhe em seções de aproximadamente 1m² por vez. Evite parar no meio da parede - termine sempre uma seção completa antes de fazer pausa para evitar marcas visíveis.</li>
+                        
+                        <li><strong>Primeira demão completa:</strong> Continue até cobrir toda a parede. Mantenha a consistência nos movimentos e na pressão do rolo. Aguarde a secagem completa (geralmente 4-6 horas, verifique na embalagem).</li>
+                        
+                        <li><strong>Segunda demão:</strong> Após secagem completa da primeira demão, repita o processo. A segunda camada garante cobertura uniforme e cor mais viva. Algumas tintas premium cobrem em uma só demão, mas duas camadas sempre resultam em melhor acabamento.</li>
+                        
+                        <li><strong>Acabamento:</strong> Remova a fita crepe antes que a última demão seque completamente (puxe em ângulo de 45° para não descascar). Toque final nos cantos se necessário. Aguarde 24h antes de encostar móveis ou objetos na parede.</li>
+                    </ol>
+                </div>
+
+                <div class="tips-box">
+                    <h5>💡 Dicas Profissionais:</h5>
+                    <ul>
+                        <li>Pinte sempre com luz natural quando possível - facilita ver imperfeições</li>
+                        <li>Não tente economizar comprando tinta barata - a qualidade faz grande diferença no resultado e rendimento</li>
+                        <li>Role de lã dão acabamento mais uniforme que rolos de espuma</li>
+                        <li>Evite pintar em dias muito quentes ou úmidos - afeta a secagem e o resultado final</li>
+                        <li>Limpe os rolos e pincéis imediatamente após o uso - não deixe secar</li>
+                        <li>Para paredes texturizadas, use rolos de lã mais longos (maior pelo)</li>
+                        <li>Mantenha "borda molhada" - sempre trabalhe partindo de áreas ainda úmidas para evitar marcas</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Final Safety Reminder -->
+            <div class="safety-alert">
+                <h4>⚠️ LEMBRETE FINAL DE SEGURANÇA</h4>
+                <p><strong>Após concluir qualquer reparo:</strong></p>
+                <ul>
+                    <li>Descarte materiais adequadamente - massa endurecida vai no lixo comum</li>
+                    <li>Limpe bem as ferramentas imediatamente após o uso</li>
+                    <li>Mantenha o ambiente ventilado por 24-48h após pintura</li>
+                    <li>Guarde tintas e produtos químicos fora do alcance de crianças e animais</li>
+                    <li>Se sentir tontura, irritação nos olhos ou dificuldade respiratória, saia imediatamente do ambiente e procure ar fresco</li>
+                    <li>Em caso de dúvida sobre a estrutura ou problema mais sério, sempre consulte um profissional qualificado</li>
+                </ul>
+            </div>
+
+            <!-- Conclusion -->
+            <div class="info-box">
+                <h4>🎉 Parabéns!</h4>
+                <p>Com estas instruções simples, você está preparado para realizar pequenos reparos em gesso e drywall por conta própria. Lembre-se: a prática leva à perfeição. Não desanime se os primeiros resultados não forem perfeitos - cada projeto é uma oportunidade de aprendizado.</p>
+                <p><strong>Economia estimada fazendo você mesmo:</strong> De 60% a 80% do valor que gastaria contratando um profissional para pequenos reparos.</p>
+                <p><strong>Quando chamar um profissional:</strong> Grandes áreas danificadas, problemas estruturais, infiltrações recorrentes, instalações elétricas complexas ou quando não se sentir seguro para realizar o trabalho.</p>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Scroll to guide function
+        function scrollToGuide() {
+            document.getElementById('guide').scrollIntoView({ 
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+
+        // Calculator functionality
+        const precos = {
+            standard: 35,
+            rfu: 45,
+            ru: 42,
+            rfru: 50
+        };
+
+        const servicoMultiplicador = {
+            forro: 1.0,
+            parede: 1.1,
+            divisoria: 1.15,
+            rebaixamento: 1.25
+        };
+
+        document.getElementById('calculatorForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            calcularOrcamento();
+        });
+
+        function calcularOrcamento() {
+            const largura = parseFloat(document.getElementById('largura').value);
+            const comprimento = parseFloat(document.getElementById('comprimento').value);
+            const tipoServico = document.getElementById('tipoServico').value;
+            const tipoPlaca = document.getElementById('tipoPlaca').value;
+
+            if (!largura || !comprimento || !tipoServico || !tipoPlaca) {
+                alert('Por favor, preencha todos os campos!');
+                return;
+            }
+
+            const area = largura * comprimento;
+            const perimetro = 2 * (largura + comprimento);
+            
+            // Cálculo de materiais
+            const numPlacas = Math.ceil(area / 2.88); // Placa padrão 1.20 x 2.40
+            const precoPlaca = precos[tipoPlaca];
+            const multiplicador = servicoMultiplicador[tipoServico];
+            
+            // Estrutura metálica (aproximação)
+            const metrosGuia = Math.ceil(perimetro);
+            const metrosMontante = Math.ceil(area / 0.6); // 1 montante a cada 60cm
+            const parafusos = Math.ceil(numPlacas * 40); // ~40 parafusos por placa
+            
+            // Massas e acabamento
+            const massaJunta = Math.ceil(perimetro * 0.5); // 0.5kg por metro linear
+            const fitaJunta = Math.ceil(perimetro);
+            
+            // Preços aproximados
+            const precoGuia = 12; // por metro
+            const precoMontante = 10; // por metro
+            const precoParafuso = 0.15; // por unidade
+            const precoMassa = 25; // por kg
+            const precoFita = 8; // por metro
+            
+            // Cálculo de custos
+            const custoPlacas = numPlacas * precoPlaca * multiplicador;
+            const custoGuias = metrosGuia * precoGuia;
+            const custoMontantes = metrosMontante * precoMontante;
+            const custoParafusos = parafusos * precoParafuso;
+            const custoMassa = massaJunta * precoMassa;
+            const custoFita = fitaJunta * precoFita;
+            
+            const custoMaterial = custoPlacas + custoGuias + custoMontantes + custoParafusos + custoMassa + custoFita;
+            const custoMaoDeObra = area * 45 * multiplicador; // R$ 45/m² base
+            const custoTotal = custoMaterial + custoMaoDeObra;
+            
+            // Variação regional
+            const custoMin = custoTotal * 0.8;
+            const custoMax = custoTotal * 1.2;
+            
+            // Exibir resultados
+            const tbody = document.getElementById('resultsBody');
+            tbody.innerHTML = `
+                <tr>
+                    <td colspan="4" style="background: var(--color-bg-1); font-weight: var(--font-weight-semibold); padding: var(--space-12);">
+                        Área: ${area.toFixed(2)}m² | Perímetro: ${perimetro.toFixed(2)}m
+                    </td>
+                </tr>
+                <tr>
+                    <td>Placas de Drywall (${tipoPlaca.toUpperCase()})</td>
+                    <td>${numPlacas} un</td>
+                    <td>${(precoPlaca * multiplicador).toFixed(2)}</td>
+                    <td>${custoPlacas.toFixed(2)}</td>
+                </tr>
+                <tr>
+                    <td>Guias Metálicas</td>
+                    <td>${metrosGuia} m</td>
+                    <td>${precoGuia.toFixed(2)}</td>
+                    <td>${custoGuias.toFixed(2)}</td>
+                </tr>
+                <tr>
+                    <td>Montantes Metálicos</td>
+                    <td>${metrosMontante} m</td>
+                    <td>${precoMontante.toFixed(2)}</td>
+                    <td>${custoMontantes.toFixed(2)}</td>
+                </tr>
+                <tr>
+                    <td>Parafusos</td>
+                    <td>${parafusos} un</td>
+                    <td>${precoParafuso.toFixed(2)}</td>
+                    <td>${custoParafusos.toFixed(2)}</td>
+                </tr>
+                <tr>
+                    <td>Massa para Juntas</td>
+                    <td>${massaJunta} kg</td>
+                    <td>${precoMassa.toFixed(2)}</td>
+                    <td>${custoMassa.toFixed(2)}</td>
+                </tr>
+                <tr>
+                    <td>Fita para Juntas</td>
+                    <td>${fitaJunta} m</td>
+                    <td>${precoFita.toFixed(2)}</td>
+                    <td>${custoFita.toFixed(2)}</td>
+                </tr>
+                <tr style="background: var(--color-bg-3);">
+                    <td colspan="3" style="font-weight: var(--font-weight-semibold);">Subtotal Materiais</td>
+                    <td style="font-weight: var(--font-weight-semibold);">R$ ${custoMaterial.toFixed(2)}</td>
+                </tr>
+                <tr>
+                    <td>Mão de Obra</td>
+                    <td>${area.toFixed(2)} m²</td>
+                    <td>${(45 * multiplicador).toFixed(2)}</td>
+                    <td>${custoMaoDeObra.toFixed(2)}</td>
+                </tr>
+                <tr class="total-row">
+                    <td colspan="3" style="font-size: var(--font-size-lg);">TOTAL ESTIMADO</td>
+                    <td style="font-size: var(--font-size-lg);">R$ ${custoTotal.toFixed(2)}</td>
+                </tr>
+                <tr style="background: var(--color-bg-2);">
+                    <td colspan="3">Variação Regional Mínima (-20%)</td>
+                    <td>R$ ${custoMin.toFixed(2)}</td>
+                </tr>
+                <tr style="background: var(--color-bg-2);">
+                    <td colspan="3">Variação Regional Máxima (+20%)</td>
+                    <td>R$ ${custoMax.toFixed(2)}</td>
+                </tr>
+            `;
+            
+            document.getElementById('results').classList.add('show');
+            document.getElementById('results').scrollIntoView({ 
+                behavior: 'smooth',
+                block: 'nearest'
+            });
+        }
+
+        function limparFormulario() {
+            document.getElementById('calculatorForm').reset();
+            document.getElementById('results').classList.remove('show');
+        }
+    </script>
+</body>
+</html>
